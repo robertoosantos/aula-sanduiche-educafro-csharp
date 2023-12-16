@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sanduiche\Sanduiche.csproj" />
+  </ItemGroup>
+
 </Project>
