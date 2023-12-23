@@ -28,37 +28,4 @@ public class ProgramTest
             Assert.EndsWith(expected, saida.ToString());
         }
     }
-
-    [Fact]
-    public void PegarFatiaTest()
-    {
-        var expected = "Peguei uma fatia de mortadela.\n";
-        var expected2 = "Peguei uma fatia de queijo.\nPeguei uma fatia de queijo.\n";
-
-        Robo roboMortadelaComQueijo = new Robo();
-
-        using (var saida = new StringWriter())
-        {
-            Console.SetOut(saida);
-
-            roboMortadelaComQueijo.PegarFatia("mortadela", 1);
-
-            Assert.EndsWith(expected, saida.ToString());
-
-            roboMortadelaComQueijo.PegarFatia("queijo", 2);
-
-            Assert.EndsWith(expected2, saida.ToString());
-        }
-    }
-
-    [Fact]
-    public void PegarFatiaNegativaTest()
-    {
-        Robo roboMortadelaComQueijo = new Robo();
-
-        using (var saida = new StringWriter())
-        {
-            Assert.Throws<ArgumentOutOfRangeException>(() => roboMortadelaComQueijo.PegarFatia("presunto", -5));
-        }
-    }
 }

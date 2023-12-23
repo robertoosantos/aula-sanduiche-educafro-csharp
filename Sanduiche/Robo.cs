@@ -1,6 +1,6 @@
 public class Robo
 {
-    public void PegarFatia(string ingrediente, int quantidade)
+    public void PegarFatia(Ingredente ingrediente, int quantidade)
     {
         if (quantidade < 0)
         {
@@ -9,7 +9,7 @@ public class Robo
 
         for (int i = 0; i < quantidade; i++)
         {
-            Console.WriteLine("Peguei uma fatia de {0}.", ingrediente);
+            Console.WriteLine("Peguei uma fatia de {0}.", ingrediente.Nome);
         }
     }
 }
