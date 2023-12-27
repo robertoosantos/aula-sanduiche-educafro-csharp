@@ -8,28 +8,23 @@ public class RoboTest
     [Fact]
     public void PegarFatiaTest()
     {
-        var expected = "Peguei uma fatia de mortadela.\n";
-        var expected2 = "Peguei uma fatia de queijo.\nPeguei uma fatia de queijo.\n";
+        string expectedMortadela = "Peguei uma fatia de mortadela.\n";
+        string expectedQueijo = "Peguei uma fatia de queijo.\nPeguei uma fatia de queijo.\n";
 
         Robo roboMortadelaComQueijo = new Robo();
         Ingredente mortadela = new Ingredente();
         mortadela.Nome = "mortadela";
-        
+
         Ingredente queijo = new Ingredente();
         queijo.Nome = "queijo";
 
-        using (var saida = new StringWriter())
-        {
-            Console.SetOut(saida);
+        string actualMortadela = roboMortadelaComQueijo.PegarFatia(mortadela, 1);
 
-            roboMortadelaComQueijo.PegarFatia(mortadela, 1);
+        Assert.Equal(expectedMortadela, actualMortadela);
 
-            Assert.EndsWith(expected, saida.ToString());
+        string atualQueijo = roboMortadelaComQueijo.PegarFatia(queijo, 2);
 
-            roboMortadelaComQueijo.PegarFatia(queijo, 2);
-
-            Assert.EndsWith(expected2, saida.ToString());
-        }
+        Assert.Equal(expectedQueijo, atualQueijo);
     }
 
     [Fact]
@@ -38,7 +33,7 @@ public class RoboTest
         Robo roboMortadelaComQueijo = new Robo();
         Ingredente presunto = new Ingredente();
 
-        using (var saida = new StringWriter())
+        using (StringWriter saida = new StringWriter())
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => roboMortadelaComQueijo.PegarFatia(presunto, -5));
         }
