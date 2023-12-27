@@ -14,7 +14,7 @@ public class Ingredente
         set { _marca = value; }
     }
 
-    public string Preparar() {
+    public virtual string Preparar() {
         string preparo = string.Format("Ingrediente {0} preparado!", _nome);
         return preparo;
     }
